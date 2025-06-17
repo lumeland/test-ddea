@@ -1,6 +1,6 @@
 {
   "tasks": {
-    "start": "deno run -RN serve.ts"
+    "dev": "deno run -RWN --watch serve.ts"
   },
   "imports": {
     "lume/": "https://deno.land/x/lume@v3.0.4/"

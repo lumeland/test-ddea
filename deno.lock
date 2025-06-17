@@ -5,6 +5,7 @@
     "jsr:@std/encoding@^1.0.10": "1.0.10",
     "jsr:@std/fmt@^1.0.8": "1.0.8",
     "jsr:@std/fs@^1.0.18": "1.0.18",
+    "jsr:@std/html@1.0.4": "1.0.4",
     "jsr:@std/html@^1.0.4": "1.0.4",
     "jsr:@std/http@1.0.18": "1.0.18",
     "jsr:@std/media-types@^1.1.0": "1.1.0",
@@ -36,7 +37,7 @@
         "jsr:@std/encoding",
         "jsr:@std/fmt",
         "jsr:@std/fs",
-        "jsr:@std/html",
+        "jsr:@std/html@^1.0.4",
         "jsr:@std/media-types",
         "jsr:@std/net",
         "jsr:@std/path@^1.1.0",
@@ -62,6 +63,7 @@
     "https://deno.land/x/lume@v3.0.4/core/utils/object.ts": "70f4d7b289478810499e5631cb9458e2961db12b5caa51ec34f87b6b5f6d4674",
     "https://deno.land/x/lume@v3.0.4/core/utils/path.ts": "7a1d199113928cc35782aa3262cbe6f7a4894bc262d7d300de9385b3da45602f",
     "https://deno.land/x/lume@v3.0.4/deps/http.ts": "53421dba4d4f03234ed801692ccc0b920146e7f9b12c1dcf9a21e5174f012db0",
-    "https://deno.land/x/lume@v3.0.4/deps/path.ts": "7b8bd4bac7b4e914138a5268fa364f171384501eb783ba02a4522d4d4564aef2"
+    "https://deno.land/x/lume@v3.0.4/deps/path.ts": "7b8bd4bac7b4e914138a5268fa364f171384501eb783ba02a4522d4d4564aef2",
+    "https://deno.land/x/lume@v3.0.4/middlewares/router.ts": "2d602033a35e6a7e990fc503664ff1ef270197bddaf4437a2838e8abaf095b94"
   }
 }
