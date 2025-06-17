@@ -1,4 +1,7 @@
 {
+  "tasks": {
+    "start": "deno serve -R serve.ts"
+  },
   "imports": {
     "lume/": "https://deno.land/x/lume@v3.0.4/"
   }
