@@ -1,0 +1,1 @@
+- It looks like `deno serve` is not automatically configured.
