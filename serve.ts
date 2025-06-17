@@ -4,4 +4,6 @@ const server = new Server({
   root: "./files",
 });
 
-export default server;
+server.start();
+
+console.log("Server is running at http://localhost:8000");
