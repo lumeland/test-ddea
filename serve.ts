@@ -27,6 +27,38 @@ router.post("/edit", async ({ request }) => {
   return Response.redirect(new URL("/", request.url));
 });
 
+router.get("/push", () => {
+  return new Response(pushChanges(), {
+    headers: {
+      "Content-Type": "text/html; charset=utf-8",
+    },
+  });
+});
+
+router.post("/push", async () => {
+  const messages: string[] = [];
+
+  try {
+    messages.push(await runCommand("deno", ["fmt"]));
+    messages.push(await runCommand("git", ["add", "."]));
+    messages.push(
+      await runCommand("git", ["commit", "-m", "Update index.html"]),
+    );
+    messages.push(await runCommand("git", ["push"]));
+    messages.push("Changes pushed successfully!");
+  } catch (error) {
+    messages.push(
+      `Error: ${error instanceof Error ? error.message : String(error)}`,
+    );
+  }
+
+  return new Response(messages.join("\n"), {
+    headers: {
+      "Content-Type": "text/plain; charset=utf-8",
+    },
+  });
+});
+
 server.use(router.middleware());
 
 server.start();
@@ -52,4 +84,38 @@ function editContent() {
   </form>
 </body>
 </html>`;
+}
+
+function pushChanges() {
+  return `
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Push changes</title>
+</head>
+<body>
+  <form action="/push" method="post">
+    <button>Push changes</button>
+  </form>
+</body>
+</html>
+  `;
+}
+
+async function runCommand(cmd: string, args: string[] = []) {
+  const command = new Deno.Command(cmd, {
+    args,
+    stdout: "piped",
+    stderr: "piped",
+  });
+
+  const { stdout, stderr } = await command.output();
+
+  if (stderr) {
+    console.error(new TextDecoder().decode(stderr));
+  }
+
+  return new TextDecoder().decode(stdout);
 }
